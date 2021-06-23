@@ -31,7 +31,8 @@ export const Background = () => {
         display: "flex",
         alignItems: "center",
         paddingBottom: "100%",
-        background: "linear-gradient(to bottom, rgba(102, 126, 234, 1), rgba(118, 75, 162, 1))"
+        background: "linear-gradient(to bottom, rgba(102, 126, 234, 1), rgba(118, 75, 162, 1))",
+        backgroundPosition: "fixed"
     });
 
     useEffect(() => {
@@ -42,7 +43,7 @@ export const Background = () => {
                     paddingBottom: "100%",
                     background: backgroundColors[Math.floor(Math.random() * backgroundColors.length)]
                 });
-            }, 5 * 1000);
+            }, 10 * 60 * 1000);
             return () => {
                 clearInterval(timer);
             }
