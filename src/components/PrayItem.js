@@ -1,17 +1,18 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-export const PrayItem = () => {
+export const PrayItem = ({data}) => {
+
     return (
-        <footer className="container p-4 col-4">
+        <div className="container col-4 p-4">
             <div className="rounded bg-gradient p-3 text-black-50">
                 <h1 className="display-6">
-                    <strong>SUBUH</strong>
+                    <strong>{data.key}</strong>
                 </h1>
                 <h2>
-                    04.41
+                    {data.value}
                 </h2>
             </div>
-        </footer>
+        </div>
     )
 };

@@ -1,23 +1,19 @@
 import axios from "axios";
-import {ALATHAN} from "./Constants";
 
-export const PrayerTimesCalendarExternal = (latitude, longitude, month, year) => {
-    if (localStorage.getItem(ALATHAN) !== null) {
-        return;
-    }
-
-    axios.get("https://api.aladhan.com/v1/calendarByCity" +
-        `?latitude=${latitude}` +
-        `&longitude=${longitude}` +
+export const PrayerTimesCalendarExternal = async (month, year) => {
+    return await axios.get(
+        "https://api.aladhan.com/v1/calendarByCity" +
+        `?city=Jakarta` +
+        `&country=Indonesia` +
         "&method=11" +
         `&month=${month}` +
         `&year=${year}` +
-        "&latitudeAdjustmentMethod=3")
-        .then(res => {
-            if (res === null || res.data === null || res.data.code !== 200) {
-                alert("Failed to get data from api.aladhan.com");
-            }
+        "&latitudeAdjustmentMethod=3"
+    ).then(res => {
+        if (res === null || res.data === null || res.data.code !== 200) {
+            alert("Failed to get res from api.aladhan.com");
+        }
 
-            localStorage.setItem(ALATHAN, JSON.stringify(res.data));
-        })
+        return res.data;
+    });
 };

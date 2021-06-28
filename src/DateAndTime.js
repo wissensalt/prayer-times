@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import React from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
+import {ALATHAN} from "./components/Constants";
 
 export const DateAndTime = ({locale}) => {
     const [today, setDate] = useState(new Date());
@@ -25,6 +26,13 @@ export const DateAndTime = ({locale}) => {
         { hour: '2-digit', hour24: true, minute: '2-digit', second: '2-digit' }
     );
 
+    const alathanData = JSON.parse(localStorage.getItem(ALATHAN));
+    let hijriDate = null;
+    if (alathanData !== null || true) {
+        const currentHijriDate = alathanData.data[today.getDate()].date.hijri;
+        hijriDate = `/ ${currentHijriDate.weekday.en}, ${currentHijriDate.day} ${currentHijriDate.month.en} 
+                    ${currentHijriDate.year}`;
+    }
 
     return (
         <div className="container p-5">
@@ -33,7 +41,7 @@ export const DateAndTime = ({locale}) => {
                     {wish}
                 </h3>
                 <h1 className="display-5">
-                    {date}
+                    {date} {hijriDate}
                 </h1>
                 <h5>
                     {time}

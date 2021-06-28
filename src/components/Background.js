@@ -43,7 +43,7 @@ export const Background = () => {
                     paddingBottom: "100%",
                     background: backgroundColors[Math.floor(Math.random() * backgroundColors.length)]
                 });
-            }, 10 * 60 * 1000);
+            }, 3 * 1000);
             return () => {
                 clearInterval(timer);
             }
